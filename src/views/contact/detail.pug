@@ -1,0 +1,8 @@
+extends ../layout
+
+block append content
+    h1= message
+    p Id : #{data.id}
+    p Prénom : #{data.firstname}
+    p Nom : #{data.lastname}
+    p Date de naissance : #{data.birthdate}

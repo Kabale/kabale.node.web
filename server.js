@@ -1,20 +1,20 @@
 const express = require('express'),
-    birds = require('./src/routes/birds');
-    contacts = require('./src/routes/contacts'); 
+    indexRouter = require('./src/routes/indexRouter'),
+    contactsRouter = require('./src/routes/contactsRouter'); 
 var app = express();
 
 app.set('view engine', 'pug');
 app.set('views', './src/views');
 
-app.use('/birds', birds);
+// Public directory
+app.use(express.static('src/public'));
+app.use('/dist', express.static('dist'));
 
-app.use('/contacts', contacts)
+// Routes Middleware
+app.use('/', indexRouter);
+app.use('/contact', contactsRouter)
 
-app.get("/", (req, res) => {
-    res.json('index');
-})
-
-
+// Run listener
 app.listen(3000, () => {
     console.log("listen on localhost:3000");
-})
+});

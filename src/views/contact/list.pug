@@ -1,0 +1,26 @@
+extends ../layout
+
+block append content
+    h1= message
+    a(href="contact/create") Créer
+    table(class="ui celled structured table")
+        thead
+            tr
+                th Id
+                th Prénom
+                th Nom
+                th Date de naissance
+                th
+        tbody
+            each row in data
+                tr
+                    td(data-label="id")= row.id
+                    td(data-label="firstname")= row.firstname
+                    td(data-label="lastname")= row.lastname
+                    td(data-label="birthdate")= row.birthdate
+                    td
+                        a(href="contact/" + row.id) Voir 
+                        a(href="contact/" + row.id + "/update") Editer 
+                        a(href="contact/" + row.id + "/delete") Supprimer 
+        
+        
